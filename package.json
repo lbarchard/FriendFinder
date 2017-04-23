@@ -1,0 +1,19 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "Helps you find friends",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbarchard/FriendFinder.git"
+  },
+  "author": "Les Barchard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lbarchard/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/lbarchard/FriendFinder#readme"
+}
