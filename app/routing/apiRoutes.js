@@ -1,9 +1,15 @@
 //file handles all API requests
+var bodyParser = require("body-parser");
 var express    = require('express');  
-var app        = express();
-     
+var app        = express(); 
+var friends = require("../data/friends.js")
+
 var port = process.env.PORT || 8079;        // set our port
 
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // ROUTES FOR OUR HTML
 // =============================================================================
@@ -16,12 +22,20 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/friends', function (req, res) {
-    console.log("getting friends")
+    friends.find(function(friends) {
+        res.json(
+            friends
+        )
+    });
 });
 
 app.post('/api/friends', function (req, res) {
-    console.log("posting friends")
+    friends.add(req.body);
+    res.json({
+        success: true
+    })
 });
+
 // START THE SERVER
 // =============================================================================
 app.listen(port);
