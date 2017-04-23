@@ -7,13 +7,11 @@ var port = process.env.PORT || 8080;        // set our port
 
 // ROUTES FOR OUR HTML
 // =============================================================================
-var router = express.Router();              // get an instance of the express Router
-
 var startHTML = function() {
 
 app.use(function(req, res, next) {
     // do logging
-    console.log(req.originalUrl);
+    console.log("User navigated to route: " + req.originalUrl);
     next(); // make sure we go to the next routes and don't stop here
 });
 
