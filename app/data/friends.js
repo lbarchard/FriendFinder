@@ -1,11 +1,7 @@
 var friends = []
-var questionNumber = 0
-var totalScoreDifference = 0
-var personNumber = 0
-var bestMatch = 0
 
 exports.add = function(answers, callback) {
-    // match(answers);
+    match(answers);
     friends.push(answers)
     callback(friends[0])//harcoded or now
 
@@ -16,33 +12,30 @@ exports.find = function(callback) {
 };
 
 match = function(friendToMatch) {
+    result = {}
+    result.bestMatchName = ""
+    result.bestMatchPhoto = ""
+    result.closestScore = 99999
+    result.currentScore = 0
     if (friends.length === 0) {
-
     }
     else {
-        bestMatch = 0
-        bestScore = 100000
-        questionNumber = 0
-        totalScoreDifference = 0
+        
         friends.forEach(function(element) {
-            (element.scores).forEach(function(score) {
-                totalScoreDifference += Math.abs((score) - friendToMatch.scores[questionNumber])
-                questionNumber = questionNumber + 1
-                console.log(totalScoreDifference)
-            }, this);
-            console.log(element.name + " difference is " + totalScoreDifference)
-            questionNumber = 0
-            totalScoreDifference = 0
-            personNumber += 1
-            console.log(personNumber)
+            // console.log(element)
+            for (var index = 0; index < element.scores.length; index++) {
+                result.currentScore = result.currentScore + Math.abs(element.scores[index]-friendToMatch.scores[index]);
+            }        
+            if (result.currentScore < result.closestScore) {
+                bestScore = result.closestScore
+                result.closestScore = bestScore
+                result.bestMatchName = element.name
+                result.bestMatchPhoto = element.photo
+                // console.log("Found a better match:")
+                // console.log(result)    
+            }
         }, this);
-        if (totalScoreDifference < bestScore) {
-            bestMatch = personNumber - 1
-            bestScore = totalScoreDifference
-            console.log("Best match is ")
-            console.log(friends[bestMatch]);
-            console.log(bestScore)
-
-        }
     }
+    console.log("ending result value")
+    console.log(result)
 };
