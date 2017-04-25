@@ -4,9 +4,11 @@ var totalScoreDifference = 0
 var personNumber = 0
 var bestMatch = 0
 
-exports.add = function(answers) {
-    match(answers);
+exports.add = function(answers, callback) {
+    // match(answers);
     friends.push(answers)
+    callback(friends[0])//harcoded or now
+
 };
 
 exports.find = function(callback) {
@@ -15,6 +17,7 @@ exports.find = function(callback) {
 
 match = function(friendToMatch) {
     if (friends.length === 0) {
+
     }
     else {
         bestMatch = 0
@@ -39,6 +42,7 @@ match = function(friendToMatch) {
             console.log("Best match is ")
             console.log(friends[bestMatch]);
             console.log(bestScore)
+
         }
     }
 };

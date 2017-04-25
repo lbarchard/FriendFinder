@@ -229,9 +229,12 @@
 	    		scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
 	    	}
 
+            console.log(userData)
+
 
 	    	// Grab the URL of the website
 	    	var currentURL = window.location.origin;
+            console.log(currentURL);
 
 	    	// AJAX post the data to the friends API. 
 	    	$.post(currentURL + "/api/friends", userData, function(data){
