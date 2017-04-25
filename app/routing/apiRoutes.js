@@ -13,12 +13,11 @@ apiRouter.use(bodyParser.json());
 // =============================================================================
 
 apiRouter.use(function(req, res, next) {
-    // do logging
     console.log("API Request: " + req.originalUrl);
-    next(); // make sure we go to the next routes and don't stop here
+    next();
 });
 
-apiRouter.get('/api', function (req, res) {
+apiRouter.get('/friends', function (req, res) {
     friends.find(function(friends) {
         res.json(
             friends
@@ -26,7 +25,7 @@ apiRouter.get('/api', function (req, res) {
     });
 });
 
-apiRouter.post('/api', function (req, res) {
+apiRouter.post('/friends', function (req, res) {
     friends.add(req.body, function(bestMatch){
         if (bestMatch === "fail") {
             res.json({

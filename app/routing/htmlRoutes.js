@@ -4,13 +4,9 @@ var app        = express();
 var htmlRouter  = express.Router(); 
 var path       = require("path");
      
-// ROUTES FOR OUR HTML
-// =============================================================================
-
 htmlRouter.use(function(req, res, next) {
-    // do logging
     console.log("User navigated to route: " + req.originalUrl);
-    next(); // make sure we go to the next routes and don't stop here
+    next();
 });
 
 htmlRouter.get('/', function (req, res) {
