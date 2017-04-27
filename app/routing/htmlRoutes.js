@@ -9,12 +9,12 @@ htmlRouter.use(function(req, res, next) {
     next();
 });
 
-htmlRouter.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public', 'home.html'));
-});
-
 htmlRouter.get('/survey', function (req, res) {
     res.sendFile(path.join(__dirname, '../public', 'survey.html'));
+});
+
+htmlRouter.use(function (req, res) {
+    res.sendFile(path.join(__dirname, '../public', 'home.html'));
 });
 
 module.exports = htmlRouter
