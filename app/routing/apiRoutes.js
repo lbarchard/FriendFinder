@@ -27,6 +27,7 @@ apiRouter.get('/friends', function (req, res) {
 
 apiRouter.post('/friends', function (req, res) {
     friends.add(req.body, function(bestMatch){
+        console.log(bestMatch)
         if (bestMatch === "fail") {
             res.json({
             "name": "fail",
@@ -35,8 +36,8 @@ apiRouter.post('/friends', function (req, res) {
         }
         else {
         res.json({
-            "name": bestMatch.name,
-            "photo": bestMatch.photo
+            "name": bestMatch.bestMatchName,
+            "photo": bestMatch.bestMatchPhoto
             })
         };
 

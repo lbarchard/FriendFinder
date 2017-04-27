@@ -1,9 +1,9 @@
 var friends = []
 
 exports.add = function(answers, callback) {
-    match(answers);
+    var result = match(answers);
     friends.push(answers)
-    callback(friends[0])//harcoded or now
+    callback(result)//harcoded or now
 
 };
 
@@ -22,20 +22,16 @@ match = function(friendToMatch) {
     else {
         
         friends.forEach(function(element) {
-            // console.log(element)
             for (var index = 0; index < element.scores.length; index++) {
                 result.currentScore = result.currentScore + Math.abs(element.scores[index]-friendToMatch.scores[index]);
             }        
             if (result.currentScore < result.closestScore) {
-                bestScore = result.closestScore
-                result.closestScore = bestScore
+                result.closestScore = result.currentScore
+                result.currentScore = 0
                 result.bestMatchName = element.name
                 result.bestMatchPhoto = element.photo
-                // console.log("Found a better match:")
-                // console.log(result)    
             }
         }, this);
     }
-    console.log("ending result value")
-    console.log(result)
+    return result
 };
