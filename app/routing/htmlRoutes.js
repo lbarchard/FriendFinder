@@ -1,6 +1,5 @@
 //file handles all HTML GET requests
 var express    = require('express');  
-var app        = express();
 var htmlRouter  = express.Router(); 
 var path       = require("path");
      
